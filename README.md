@@ -35,7 +35,7 @@ Notes: There seem to be numerous errors and omissions in the instructions as pro
 1. `$ sudo apt-get update`
 1. `$ sudo apt-get install p7zip python3-serial minicom Jetson.GPIO -y`
 1. `$ wget https://www.waveshare.com/w/upload/9/9b/SIM7600X_4G_for_JETSON_NANO.7z`
-1. `$ p7zip --uncompress https://www.waveshare.com/w/upload/9/9b/SIM7600X_4G_for_JETSON_NANO.7z`
+1. `$ p7zip --uncompress SIM7600X_4G_for_JETSON_NANO.7z`
 
 ## Enable the Hardware (only necessary for testing before the kernel module is installed)
 
@@ -190,16 +190,16 @@ KERNEL_BUILD=/lib/modules/$(VER)/build
 INSTALL_ROOT=/
 
 default:
-        $(MAKE) -C $(KERNEL_BUILD) M=$(PWD) modules
+	$(MAKE) -C $(KERNEL_BUILD) M=$(PWD) modules
 clean:
-        $(MAKE) -C $(KERNEL_BUILD) M=$(PWD) clean
+	$(MAKE) -C $(KERNEL_BUILD) M=$(PWD) clean
 install:
-        $(MAKE) -C $(KERNEL_BUILD) M=$(PWD) INSTALL_MOD_PATH=$(INSTALL_ROOT) modules_install
+	$(MAKE) -C $(KERNEL_BUILD) M=$(PWD) INSTALL_MOD_PATH=$(INSTALL_ROOT) modules_install
 ```
 
 1. Press `ctrl+x` then `y` then `enter` to save and exit.
 1. `$ sudo make clean && sudo make && sudo install`
-1. `$ sudo depmod -a`
+1. `$ sudo depmod`
 1. `$ sudo modprobe -v simcom_wwan`
 1. Look for `simcom_wwan` in loaded modules list to confirm successful installation: `$ sudo lsmod`
 1. Check kernel messages for successful installation: `$ sudo dmesg`
@@ -253,4 +253,7 @@ It's recommended that you clone the repo locally on the Jetson Nano.
 1. `$ sudo nano /etc/udev/rules.d/99-usb-4g.rules`
 1. Add the line: `SUBSYSTEM=="tty", KERNEL=="ttyUSB2", TAG+="systemd", ENV{SYSTEMD_WANTS}+="simcom_wwan@wwan0.service"`
 1. Ctrl-X, Y, Enter (Save and close)
-1. Test the changes: `$ sudo reboot`
+
+### Test the changes
+
+1. `$ sudo reboot`
