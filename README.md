@@ -241,3 +241,16 @@ It's recommended that you clone the repo locally on the Jetson Nano.
 * To start the service and 4G LTE connectivity: `$ sudo systemctl start simcom_wwan@wwan0.service`
 * To stop the service and 4G LTE connectivity: `$ sudo systemctl stop simcom_wwan@wwan0.service`
 * To check the status of the service: `$ sudo systemctl status simcom_wwan@wwan0.service`
+
+### To make sure the Jetson Nano loads the `simcom_wwan` kernel module driver:
+
+1. `$ sudo nano /etc/modules-load.d/modules.conf`
+1. Add `simcom_wwan` to this file if it's not already there.
+1. Ctrl-X, Y, Enter (Save and close)
+
+### To make the `sim_comwwan@wwan0` service wait for the USB device:
+
+1. `$ sudo nano /etc/udev/rules.d/99-usb-4g.rules`
+1. Add the line: `SUBSYSTEM=="tty", KERNEL=="ttyUSB2", TAG+="systemd", ENV{SYSTEMD_WANTS}+="simcom_wwan@wwan0.service"`
+1. Ctrl-X, Y, Enter (Save and close)
+1. Test the changes: `$ sudo reboot`
