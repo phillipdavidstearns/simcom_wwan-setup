@@ -228,7 +228,8 @@ There are scripts included in this repo that allow you to install 4G connectivit
 
 It's recommended that you clone the repo locally on the Jetson Nano.
 
-1. `$ cd <path to mars rover repo>/connectivity/4GLTE`
+1. `$ git clone https://github.com/phillipdavidstearns/simcom_wwan-setup.git`
+1. `$ cd simcom_wwan-setup`
 1. `$ chmod +x install.sh uninstall.sh update.sh`
 1. To install: `$ sudo ./install`
 1. To uninstall: `$ sudo ./uninstall` 
