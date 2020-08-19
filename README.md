@@ -198,11 +198,13 @@ install:
 ```
 
 1. Press `ctrl+x` then `y` then `enter` to save and exit.
-1. `$ sudo make clean && sudo make && sudo install`
+1. `$ sudo make clean`
+1. `$ sudo make`
+1. `$ sudo install`
 1. `$ sudo depmod`
 1. `$ sudo modprobe -v simcom_wwan`
-1. Look for `simcom_wwan` in loaded modules list to confirm successful installation: `$ sudo lsmod`
-1. Check kernel messages for successful installation: `$ sudo dmesg`
+1. Check for `simcom_wwan` to confirm successful installation: `$ sudo lsmod`
+1. Check kernel messages for successful installation: `$ sudo dmesg | grep simcom`
 
 ```
 [ 1689.111826] simcom_wwan: loading out-of-tree module taints kernel.
@@ -231,8 +233,8 @@ It's recommended that you clone the repo locally on the Jetson Nano.
 1. `$ git clone https://github.com/phillipdavidstearns/simcom_wwan-setup.git`
 1. `$ cd simcom_wwan-setup`
 1. `$ chmod +x install.sh uninstall.sh update.sh`
-1. To install: `$ sudo ./install`
-1. To uninstall: `$ sudo ./uninstall` 
+1. To install: `$ sudo ./install.sh`
+1. To uninstall: `$ sudo ./uninstall.sh` 
 1. To update: `$ git pull; sudo ./update.sh`
 
 * This service is disabled by default and will not start at boot.
