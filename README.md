@@ -201,6 +201,7 @@ install:
 1. `$ sudo make clean`
 1. `$ sudo make`
 1. `$ sudo install`
+	* note: try `sudo install ./simcom*.* /lib/modules/4.9.140-tegra` on the latest image release if the above fails.
 1. `$ sudo depmod`
 1. `$ sudo modprobe -v simcom_wwan`
 1. Check for `simcom_wwan` to confirm successful installation: `$ sudo lsmod`
