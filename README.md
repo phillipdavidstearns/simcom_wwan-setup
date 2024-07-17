@@ -1,4 +1,6 @@
-# Setup the Waveshare SIM7600G for Jetson Nano
+# [NO LLNGER MAINTAINED] Setup the Waveshare SIM7600G for Jetson Nano
+
+**NOTE: This repository is no longer being maintained. Please check most recently updated forks for your issue.**
 
 This guide is heavily adapted from the guide published on the waveshare site, available [here](https://www.waveshare.com/wiki/SIM7600G-H_4G_for_Jetson_Nano).
 
